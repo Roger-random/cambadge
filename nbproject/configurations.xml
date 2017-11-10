@@ -44,11 +44,7 @@
       <itemPath>scope.c</itemPath>
       <itemPath>box_game.c</itemPath>
       <itemPath>breakout.c</itemPath>
-      <itemPath>manifest.c</itemPath>
-      <itemPath>matrix.c</itemPath>
-      <itemPath>ouija.c</itemPath>
       <itemPath>tetrapuzz.c</itemPath>
-      <itemPath>puzzles.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -70,7 +66,7 @@
         <platformTool>ICD4Tool</platformTool>
         <languageToolchain>XC32</languageToolchain>
         <languageToolchainVersion>1.44</languageToolchainVersion>
-        <platform>3</platform>
+        <platform>2</platform>
       </toolsSet>
       <compileType>
         <linkerTool>
@@ -808,62 +804,6 @@
         <property key="warningmessagebreakoptions.warningmessages" value="holdstate"/>
       </Simulator>
       <item path="link_forboot.ld" ex="false" overriding="false">
-        <C32>
-        </C32>
-        <C32-AR>
-        </C32-AR>
-        <C32-AS>
-        </C32-AS>
-        <C32-LD>
-        </C32-LD>
-        <C32CPP>
-        </C32CPP>
-        <C32Global>
-        </C32Global>
-      </item>
-      <item path="manifest.c" ex="true" overriding="false">
-        <C32>
-        </C32>
-        <C32-AR>
-        </C32-AR>
-        <C32-AS>
-        </C32-AS>
-        <C32-LD>
-        </C32-LD>
-        <C32CPP>
-        </C32CPP>
-        <C32Global>
-        </C32Global>
-      </item>
-      <item path="matrix.c" ex="true" overriding="false">
-        <C32>
-        </C32>
-        <C32-AR>
-        </C32-AR>
-        <C32-AS>
-        </C32-AS>
-        <C32-LD>
-        </C32-LD>
-        <C32CPP>
-        </C32CPP>
-        <C32Global>
-        </C32Global>
-      </item>
-      <item path="ouija.c" ex="true" overriding="false">
-        <C32>
-        </C32>
-        <C32-AR>
-        </C32-AR>
-        <C32-AS>
-        </C32-AS>
-        <C32-LD>
-        </C32-LD>
-        <C32CPP>
-        </C32CPP>
-        <C32Global>
-        </C32Global>
-      </item>
-      <item path="puzzles.c" ex="true" overriding="false">
         <C32>
         </C32>
         <C32-AR>

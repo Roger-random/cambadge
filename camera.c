@@ -21,6 +21,7 @@
 #define ct_dir 1
 #define ct_avi 2
 
+#define UGLY_TIME_LAPSE 1
 
 char camname[12];
 
@@ -60,7 +61,11 @@ char* camera(unsigned int action) {
     static unsigned int rectime, explock,campage;
     unsigned int i;
 
-
+#ifdef UGLY_TIME_LAPSE    
+    static unsigned int ticksPerFrameMax=50;
+    static unsigned int ticksThisFrame=0;
+#endif
+    
     if (action == act_name) return ("CAMERA");
     else if (action == act_help) return ("Takes pictures");
     if (action == act_start) camstate = s_camstart;
@@ -184,6 +189,9 @@ char* camera(unsigned int action) {
 
             cam_grabenable(camen_grab, 7, 0);
             campage=0;
+#ifdef UGLY_TIME_LAPSE    
+            ticksThisFrame=0;
+#endif
             camstate = s_waitavi;
             break;
 
@@ -194,6 +202,9 @@ char* camera(unsigned int action) {
                 cam_grabdisable();
                     printf(bot tabx12 "Ending");
                     avi_frametime = rectime / avi_frames; // get correct framerate on playback
+#ifdef UGLY_TIME_LAPSE    
+                    avi_frametime = 33333; // 1000000 = 1 second
+#endif                    
                     if (finishavi()) {
                         printf(bot "Error EndAVI  " del del);
                         FSfclose(fptr);
@@ -204,7 +215,18 @@ char* camera(unsigned int action) {
                 }
 
             if (cam_newframe == 0) break; //got a new frame ?
-        
+            
+#ifdef UGLY_TIME_LAPSE    
+            // Been long enough since last frame?
+            ticksThisFrame+=tick;
+            if(ticksThisFrame < ticksPerFrameMax)
+            {
+              break;
+            }
+            powerdowntimer = 0; // Prevent auto shutoff from lack of (overt) activity
+            ticksThisFrame = 0;
+#endif
+            
             cam_grabenable(camen_grab,7+(campage?0:(avi_framelen+8)),0); // start grab to other page
             if (camflags & camopt_mono) monopalette(0, 255);
 

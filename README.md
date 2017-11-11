@@ -19,6 +19,7 @@ I was going to have a separate working document to note interesting things in co
 *cambadge.h*:
 
 * **cambufsize** defined to be **dispwidth** by **dispheight**, which is right now 128x128. What's the reasoning behind these values? "That's the resolution of the screen"? "That's all the memory we have"? Other?
+* Asked Mike Harrison for answer: memory. That's ~80% of what we have available on the PIC that can work at the speed required to keep up with the camera's DMA transfers. Since it was also the resolution of the screen, it was good enough. For higher resolutions we'd need to shuffle the memory out of the PIC and into other storage. This was the intent of the SRAM on the board, but Mike ran out of time to make that work. Right now, the SRAM is only accessed as part of the self-test. Not all hope is lost - the camera could be under-clocked to slow it down so the PIC can keep up with data processing. The bar code reader applicaton can be used as reference for this task.
 
 *globals.h*:
 

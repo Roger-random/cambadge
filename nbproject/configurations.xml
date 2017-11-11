@@ -45,6 +45,7 @@
       <itemPath>box_game.c</itemPath>
       <itemPath>breakout.c</itemPath>
       <itemPath>tetrapuzz.c</itemPath>
+      <itemPath>timelapse.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -66,7 +67,7 @@
         <platformTool>ICD4Tool</platformTool>
         <languageToolchain>XC32</languageToolchain>
         <languageToolchainVersion>1.44</languageToolchainVersion>
-        <platform>3</platform>
+        <platform>2</platform>
       </toolsSet>
       <compileType>
         <linkerTool>

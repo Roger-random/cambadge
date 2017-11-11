@@ -7,7 +7,7 @@
 
 //=========================================================== 
 // debug and high-level tweak options
-#define version "BADGE 1.03"
+#define version "Roger v1.03"
 #define versionbyte 103 // returned by serial command
 
 

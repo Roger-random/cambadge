@@ -8,6 +8,8 @@
 #define state_start 0
 #define state_done 1
 #define state_fin 2
+#define state_credits 3
+#define state_end_menu 4
 
 #define state_show05 50
 #define state_wait05 51
@@ -21,10 +23,6 @@
 #define state_play20 201
 #define state_show25 250
 #define state_wait25 251
-#define state_show30 300
-#define state_play30 301
-#define state_show35 350
-#define state_wait35 351
 #define state_show40 400
 #define state_play40 401
 #define state_show45 450
@@ -33,8 +31,16 @@
 #define state_play50 501
 #define state_show60 600
 #define state_wait60 601
+#define state_show61 610
+#define state_wait61 611
+#define state_show62 620
+#define state_wait62 621
+#define state_show63 630
+#define state_wait63 631
 #define state_show70 700
 #define state_wait70 701
+#define state_show71 710
+#define state_wait71 711
 
 static unsigned int state;
 static unsigned int wait;
@@ -106,7 +112,7 @@ char* avitrim(unsigned int action)
   switch(state)
   {
     case state_start:
-      //printf(cls top butcol "EXIT"); Commented out to keep screen clear
+      printf(cls);
       FSchdir("\\");
       state = state_show05;
       break;
@@ -136,7 +142,7 @@ char* avitrim(unsigned int action)
       break;
     case state_show16:
       printf(cls);
-      printf(tabx7 taby6 "Workshops!");
+      printf(tabx7 taby6 "Workshops");
       state = state_wait16;
       break;
     case state_wait16:
@@ -150,26 +156,11 @@ char* avitrim(unsigned int action)
       break;
     case state_show25:
       printf(cls);
-      printf(tabx3 taby6 "Badge hacking!");
+      printf(tabx4 taby6 "Badge Hacking");
       state = state_wait25;
       break;
     case state_wait25:
       waitState(100, state_show40);
-      break;
-    case state_show30:
-      startShow("30bdwall.avi", state_play30);
-      break;
-    case state_play30:
-      playState(state_show35);
-      break;
-    case state_show35:
-      printf(cls);
-      printf(tabx3 taby4 "Badge hacking...");
-      printf(tabx3 taby7 "UP CLOSE!");
-      state = state_wait35;
-      break;
-    case state_wait35:
-      waitState(150, state_show40);
       break;
     case state_show40:
       startShow("40bdtabl.avi", state_play40);
@@ -179,12 +170,13 @@ char* avitrim(unsigned int action)
       break;
     case state_show45:
       printf(cls);
-      printf(tabx0 taby4 "And occasionally...");
-      printf(tabx0 taby8 "ELF NEEDS FOOD BADLY");
+      printf(tabx0 taby4 "Eat, Drink");
+      printf(tabx6 taby6 "Congregate");
+      printf(tabx12 taby8 "Connect");
       state = state_wait45;
       break;
     case state_wait45:
-      waitState(175, state_show50);
+      waitState(200, state_show50);
       break;
     case state_show50:
       startShow("50food.avi", state_play50);
@@ -195,31 +187,70 @@ char* avitrim(unsigned int action)
     case state_show60:
       printf(cls);
       printf(tabx2 taby3 "Learn...");
-      printf(tabx5 taby5 "Hack...");
-      printf(tabx8 taby7 "Eat...");
-      printf(tabx11 taby9 "Repeat!");
-      
       state = state_wait60;
       break;
     case state_wait60:
-      waitState(150, state_show70);
+      waitState(50, state_show61);
+      break;
+    case state_show61:
+      printf(tabx5 taby5 "Hack...");
+      state = state_wait61;
+      break;
+    case state_wait61:
+      waitState(50, state_show62);
+      break;
+    case state_show62:      
+      printf(tabx8 taby7 "Eat...");
+      state = state_wait62;
+      break;
+    case state_wait62:
+      waitState(50, state_show63);
+      break;
+    case state_show63:
+      printf(tabx11 taby9 "Repeat!");
+      state = state_wait63;
+      break;
+    case state_wait63:
+      waitState(50, state_show70);
       break;
     case state_show70:
       printf(cls);
-      printf(tabx3 taby2 "The back alley of");
-      printf(tabx3 taby4 "Hackaday");
-      printf(tabx3 taby5 "Superconference");
-      printf(tabx14 taby8"2017");
+      printf(tabx0 taby2 "In the back alley of");
       state = state_wait70;
       break;
     case state_wait70:
+      waitState(50, state_show71);
+      break;
+    case state_show71:
+      printf(tabx3 taby5 "Hackaday");
+      printf(tabx3 taby6 "Superconference");
+      printf(tabx14 taby9"2017");
+      state = state_wait71;
+      break;
+    case state_wait71:
       waitState(150, state_done);
       break;
     case state_done:
       printf(cls);
+      printf(tabx15 taby10 whi "fin");
       state = state_fin;
     case state_fin:
-      printf(tabx15 taby10 whi "fin");
+      waitState(100, state_credits);
+      break;
+    case state_credits:
+      printf(cls top butcol "EXIT");
+      printf(bot butcol "REPLAY");
+      printf(tabx0 taby4 whi "https://hackaday.io/");
+      printf(tabx0 taby5 whi "project/28129-");
+      printf(tabx0 taby6 whi "panning-time-lapse-");
+      printf(tabx0 taby7 whi "with-supercon-2017-");
+      printf(tabx0 taby8 whi "cambadge");
+      state = state_end_menu;
+    case state_end_menu:
+      if(butpress & but1)
+      {
+        state = state_start;
+      }
       break;
     default:
       printf(tabx6 taby0 whi "State ERROR");

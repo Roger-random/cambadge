@@ -232,7 +232,7 @@ char* avitrim(unsigned int action)
       break;
     case state_done:
       printf(cls);
-      printf(tabx15 taby10 whi "fin");
+      printf(tabx13 taby11 whi "the end");
       state = state_fin;
     case state_fin:
       waitState(100, state_credits);

@@ -1,4 +1,4 @@
-// Time lapse app for the Superconference 2017 camera badge
+// AVI trim app for the Superconference 2017 camera badge
 
 #include "cambadge.h"
 #include "globals.h"
@@ -8,7 +8,7 @@
 #define state_start 0
 #define state_menu 1
 
-char* timelapse(unsigned int action)
+char* avitrim(unsigned int action)
 {
   static unsigned int state;
   

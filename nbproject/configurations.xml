@@ -45,6 +45,7 @@
       <itemPath>box_game.c</itemPath>
       <itemPath>breakout.c</itemPath>
       <itemPath>tetrapuzz.c</itemPath>
+      <itemPath>avitrim.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

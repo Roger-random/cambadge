@@ -4,6 +4,11 @@ This is a copy/fork/(whatever term you prefer) of the camera badge firmware runn
 
 https://hackaday.io/project/27427-camera-badge-for-supercon-2017
 
+Hackaday Superconference 2017 has come to an end, and I'm going to leave this project exactly as-is. Leaving the code base true to the nature of a hackathon: rough, crude, just (barely) enough to demonstrate an idea. I had no time for elegant architecture, no time for flexible parameterized operation, no time for good comments. Heck, I could barely be bothered to type out sensible variable names!
+
+If I come back and want to work on the camera badge further, I'll be sure to preserve the code in its current state in a branch so I could look back. It'll always be a good laugh to look at how bad my code is when I'm writing it at 2am with not enough sleep and chemically propelled by caffeine.
+
+---
 ---
 
 I was going to have a separate working document to note interesting things in code, to-do list, etc. But decided I'm going to do this right out in the open right in the README.md
